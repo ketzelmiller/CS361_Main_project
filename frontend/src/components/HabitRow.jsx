@@ -1,8 +1,14 @@
 import { MdEdit, MdDelete } from "react-icons/md";
 
+/*FUTURE FUNCTIONALITY WILL STORE TOTAL HABIT COMPLETIONS*/
+
 function HabitRow({ habit, onDelete, onEdit }) {
   return (
     <tr>
+      <td style = {{ textAlign: "center" }}>
+        <input type="checkbox"/>
+      </td>
+
       <td>{habit.name}</td>
       <td>{habit.frequency}</td>
       <td>{habit.notes || ""}</td>

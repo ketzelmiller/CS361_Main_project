@@ -6,6 +6,8 @@ import HabitTable from "../components/HabitTable";
 function MyHabits({setHabitToEdit}) {
   const navigate = useNavigate();
   const [habits, setHabits] = useState([]); // starts blank
+  // Checkboxes
+  const [completedById, setCompletedById] = useState({})
 
   async function loadHabits() {
     const response = await fetch("/habits");
@@ -18,7 +20,7 @@ function MyHabits({setHabitToEdit}) {
     loadHabits();
 }, []);
 
-  // Deleting and exercise
+  // Deleting an exercise
   async function onDelete(habitId){
     const response = await fetch(`/habits/${habitId}`, { method: "DELETE"})
     // Debugging
@@ -36,11 +38,20 @@ function MyHabits({setHabitToEdit}) {
     navigate(`/edit/${habit._id}`)
   }
   
+  /*-----
+  FUTURE FUNCTIONALITY WILL BE TO STORE THE COMPLETION DATA IN OUR DB
+  -----*/
+  function toggleComplete(habitId, checked){
+    setCompletedById((prev) => ({
+      ...prev, [habitId]: checked,
+    }))
+  }
+
   return(
     <div className="view-page">
       <h2>All Habits</h2>
 
-      <HabitTable habits = {habits} onDelete={onDelete} onEdit={onEdit}/>
+      <HabitTable habits = {habits} onDelete={onDelete} onEdit={onEdit} completedById={completedById} toggleComplete={toggleComplete}/>
     </div>
   )
 }

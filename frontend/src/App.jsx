@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import PastHabits from './pages/PastHabitsPage';
 
 // Importing Components
 import Welcome from './pages/WelcomePage';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/habits" element = {<MyHabits setHabitToEdit={setHabitToEdit}/>}></Route>
         <Route path="/create" element = {<CreatePage/>}></Route>
         <Route path="/edit/:id" element={<EditPage habitToEdit={habitToEdit}/>}></Route>
+        <Route path="/past-habits" element={<PastHabits/>}></Route>
       </Routes>
     </BrowserRouter>
   );

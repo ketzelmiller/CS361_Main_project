@@ -1,19 +1,18 @@
-import HabitRow from "./HabitRow";
+import PastHabitRow from "./PastHabitRow";
 
-export default function HabitTable({habits, onDelete, onEdit}){
+
+export default function PastHabitTable({habits, onRestore}){
   if (!habits || habits.length === 0) {
-  return <p>No habits yet.</p>;
+  return <p>No deleted habits in the past 30 days.</p>;
   }
   return(
     <table border="1" cellPadding="8" style={{ borderCollapse: "collapse", width: "100%" }}>
       <thead>
         <tr>
-          <th>Completed</th>
           <th>Habit</th>
           <th>Frequency</th>
           <th>Notes</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th>Restore</th>
         </tr>
       </thead>
       <tbody>
@@ -22,13 +21,11 @@ export default function HabitTable({habits, onDelete, onEdit}){
             key={h._id}
             habit={h}
             onEdit={onEdit}
-            onDelete={onDelete}
+            onRestore={onRestore}
           />
         ))}
       </tbody>
     </table>
   )
 }
-
-
 

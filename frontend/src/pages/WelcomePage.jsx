@@ -5,9 +5,10 @@ function Welcome(){
 
   return(
     <div>
-      <h1>Welcome!</h1>
-      <button onClick={() => navigate("/habits")}>Get Started</button>
-  
+      <h1>Habit Tracker</h1>
+      <h2>A place to track what matters to you, your way.</h2>
+      {/*<button onClick={() => navigate("/habits")}>Get Started</button>*/}
+      <footer>Kyle Etzelmiller &copy; 2025</footer>
     </div>
   )
 }

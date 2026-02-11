@@ -18,6 +18,7 @@ function NavBar() {
     <nav style={{ display: "flex", gap: 10, justifyContent: "center", marginBottom: 16 }}>
       <Link to="/create" style={linkStyle("/create")}>Create</Link>
       <Link to="/habits" style={linkStyle("/habits")}>View</Link>
+      <Link to="/past-habits" style={linkStyle("/past-habits")}>Past Habits</Link>
       <Link to="/" style={linkStyle("/")}>Exit</Link>
     </nav>
   );

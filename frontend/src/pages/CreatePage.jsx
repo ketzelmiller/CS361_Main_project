@@ -25,7 +25,7 @@ function CreatePage(){
   }
   return(
     <div className='create-page'>
-      <h2>Create Habit</h2>
+      <h2>What habit would you like to start tracking?</h2>
       <form onSubmit={handleSubmit} className="habit-form">
       <div className="habit-form-grid">
         <div className="field">
@@ -62,7 +62,7 @@ function CreatePage(){
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={4}
-            placeholder="Why is this habit important?"
+            placeholder="Why is this habit important to you?"
           />
         </div>
 
