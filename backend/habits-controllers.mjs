@@ -55,6 +55,12 @@ app.get("/habits/:id", habitValidators, validate, asyncHandler(async (req, res) 
   res.status(200).json(habit);
 }));
 
+// GET deleted habit (last 30 days)
+app.get("/habits/deleted", asyncHandler(async(req, res) => {
+  const deletedHabits = await habits.getDeletedHabits()
+  res.status(200).json(deletedHabits)
+}))
+
 // PUT
 app.put("/habits/:id", asyncHandler(async (req, res) => {
   const updated = await habits.updateHabitById(req.params.id, req.body);
@@ -62,9 +68,17 @@ app.put("/habits/:id", asyncHandler(async (req, res) => {
   res.status(200).json(updated);
 }));
 
+// PATCH
+app.patch("/habits/:id/restore", asyncHandler(async(req,res) => {
+  const restored = await habits.restoreHabitById(req.params.id)
+  if (!restored) return res.status(404).json({ error: "Not found" });
+  res.status(200).json(restored);
+}))
+
 // DELETE
 app.delete("/habits/:id", asyncHandler(async (req, res) => {
-  const deletedCount = await habits.deleteHabitById(req.params.id);
-  if (deletedCount === 0) return res.status(404).json({ error: "Not found" });
+  const deleted = await habits.deleteHabitById(req.params.id);
+  if (!deleted) return res.status(404).json({ error: "Not found" });
   res.status(204).send();
 }));
+
